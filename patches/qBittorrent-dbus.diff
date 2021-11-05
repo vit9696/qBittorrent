@@ -1,0 +1,10 @@
+--- a/CMakeLists.txt	2021-11-06 00:04:26.000000000 +0300
++++ b/CMakeLists.txt	2021-11-06 00:26:51.000000000 +0300
+@@ -24,6 +24,7 @@ include(CheckCXXSourceCompiles) # TODO: 
+ include(FeatureSummary)
+ include(FeatureOptionsSetup)
+ feature_option(QT6 "Use Qt6" OFF)
++feature_option(DBUS "Use DBUS" ON)
+ feature_option(STACKTRACE "Enable stacktraces" ON)
+ feature_option(GUI "Build GUI application" ON)
+ feature_option(WEBUI "Enables built-in HTTP server for headless use" ON)
