@@ -1,0 +1,81 @@
+diff --git a/src/app/CMakeLists.txt b/src/app/CMakeLists.txt
+index 8d7a297..da6c189 100644
+--- a/src/app/CMakeLists.txt
++++ b/src/app/CMakeLists.txt
+@@ -46,6 +46,7 @@ target_sources(qbt_app PRIVATE
+ 
+     # resources
+     "${qBittorrent_SOURCE_DIR}/src/icons/icons.qrc"
++    "${qBittorrent_SOURCE_DIR}/src/icons-light/icons.qrc"
+     "${qBittorrent_SOURCE_DIR}/src/searchengine/searchengine.qrc"
+     ${QBT_QM_FILES}
+     "${qBittorrent_BINARY_DIR}/src/lang/lang.qrc" # yes, it's supposed to be "*_BINARY_DIR"
+diff --git a/src/gui/transferlistmodel.cpp b/src/gui/transferlistmodel.cpp
+index 864ac02..68458c1 100644
+--- a/src/gui/transferlistmodel.cpp
++++ b/src/gui/transferlistmodel.cpp
+@@ -58,8 +58,6 @@ static QIcon getCompletedIcon();
+ static QIcon getCheckingIcon();
+ static QIcon getErrorIcon();
+ 
+-static bool isDarkTheme();
+-
+ namespace
+ {
+     QHash<BitTorrent::TorrentState, QColor> torrentStateColorsFromUITheme()
+@@ -814,11 +812,3 @@ QIcon getErrorIcon()
+     static QIcon cached = UIThemeManager::instance()->getIcon(QLatin1String("error"));
+     return cached;
+ }
+-
+-bool isDarkTheme()
+-{
+-    const QPalette pal = QApplication::palette();
+-    // QPalette::Base is used for the background of the Treeview
+-    const QColor &color = pal.color(QPalette::Active, QPalette::Base);
+-    return (color.lightness() < 127);
+-}
+diff --git a/src/gui/uithememanager.cpp b/src/gui/uithememanager.cpp
+index fa50177..ccf0be3 100644
+--- a/src/gui/uithememanager.cpp
++++ b/src/gui/uithememanager.cpp
+@@ -40,9 +40,18 @@
+ #include "base/preferences.h"
+ #include "base/utils/fs.h"
+ 
++bool isDarkTheme()
++{
++    const QPalette pal = QApplication::palette();
++    // QPalette::Base is used for the background of the Treeview
++    const QColor &color = pal.color(QPalette::Active, QPalette::Base);
++    return (color.lightness() < 127);
++}
++
+ namespace
+ {
+     const QString ICONS_DIR = QStringLiteral(":icons/");
++    const QString LIGHT_ICONS_DIR = QStringLiteral(":icons-light/");
+     const QString THEME_ICONS_DIR = QStringLiteral(":uitheme/icons/");
+     const QString CONFIG_FILE_NAME = QStringLiteral(":uitheme/config.json");
+ 
+@@ -192,6 +201,10 @@ QString UIThemeManager::getIconPathFromResources(const QString &iconId, const QS
+             if (!fallbackIcon.isEmpty())
+                 return fallbackIcon;
+         }
++    } else if (!isDarkTheme()) {
++        const QString lightIcon = findIcon(iconId, LIGHT_ICONS_DIR);
++        if (!lightIcon.isEmpty())
++            return lightIcon;
+     }
+ 
+     return findIcon(iconId, ICONS_DIR);
+diff --git a/src/gui/uithememanager.h b/src/gui/uithememanager.h
+index becb13b..bf216e2 100644
+--- a/src/gui/uithememanager.h
++++ b/src/gui/uithememanager.h
+@@ -67,3 +67,5 @@ private:
+     const bool m_useSystemTheme;
+ #endif
+ };
++
++bool isDarkTheme();

@@ -58,6 +58,7 @@ git apply ${SELFDIR}/patches/qBittorrent-sequential.diff
 # TODO: Investigate whether only macOS 12 is affected?
 # git apply ${SELFDIR}/patches/qBittorrent-statusbar.diff
 git apply ${SELFDIR}/patches/qBittorrent-dbus.diff
+git apply ${SELFDIR}/patches/qBittorrent-light.diff
 git apply ${SELFDIR}/patches/qBittorrent-version.diff
 
 mkdir build && cd build
