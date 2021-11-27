@@ -4,8 +4,8 @@
 # -x / set -x / set -o xtrace  - print commands and their arguments as they are executed
 set -o pipefail     # the return value of a pipeline is the status of the last command to exit with a non-zero status
 
-MIN_MACOS_VER=10.14
-LIBTORRENT_COMMIT=1a1a80c8d8d8a82532deaddb48a5d71c3390bcf3
+MIN_MACOS_VER=10.15
+LIBTORRENT_COMMIT=9c8f93fb6be76483fdd07b7986dc920aff2b3782
 QBITTORRENT_COMMIT=51469f8fa2485c3932e9c03fbcd5605ec734cd1c
 OPENSSL_ROOT_DIR=/usr/local/opt/openssl
 OPENSSL_LIBRARIES=/usr/local/opt/openssl/lib
@@ -36,7 +36,6 @@ git_shallow_clone() {
 # download and build libtorrent
 git_shallow_clone libtorrent https://github.com/arvidn/libtorrent $LIBTORRENT_COMMIT
 cd libtorrent
-git apply ${SELFDIR}/patches/libtorrent.diff
 
 cmake -Wno-dev -B build -G Ninja -DCMAKE_PREFIX_PATH=${DEPSDIR} -DCMAKE_CXX_STANDARD=17 \
   -DCMAKE_CXX_EXTENSIONS=OFF -DCMAKE_OSX_DEPLOYMENT_TARGET=${MIN_MACOS_VER} \
