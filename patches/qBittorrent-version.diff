@@ -3,16 +3,16 @@ diff -rupN qBittorrent-up/src/base/version.h.in qBittorrent/src/base/version.h.i
 +++ qBittorrent/src/base/version.h.in	2021-11-05 20:25:36.000000000 +0300
 @@ -29,10 +29,10 @@
  #pragma once
- 
+
  #define QBT_VERSION_MAJOR 4
 -#define QBT_VERSION_MINOR 4
 -#define QBT_VERSION_BUGFIX 0
-+#define QBT_VERSION_MINOR 3
-+#define QBT_VERSION_BUGFIX 9
++#define QBT_VERSION_MINOR 4
++#define QBT_VERSION_BUGFIX 0
  #define QBT_VERSION_BUILD 0
 -#define QBT_VERSION_STATUS "rc1"  // Should be empty for stable releases!
 +#define QBT_VERSION_STATUS ""  // Should be empty for stable releases!
- 
+
  #define QBT__STRINGIFY(x) #x
  #define QBT_STRINGIFY(x) QBT__STRINGIFY(x)
 --- qBittorrent-up/dist/mac/Info.plist	2021-11-06 00:50:50.000000000 +0300
