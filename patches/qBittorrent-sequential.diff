@@ -1,24 +1,26 @@
-diff -rupN qBittorrent-up/src/base/bittorrent/addtorrentparams.h qBittorrent/src/base/bittorrent/addtorrentparams.h
---- qBittorrent-up/src/base/bittorrent/addtorrentparams.h	2021-11-05 20:26:21.000000000 +0300
-+++ qBittorrent/src/base/bittorrent/addtorrentparams.h	2021-11-05 20:25:36.000000000 +0300
-@@ -49,8 +49,8 @@ namespace BitTorrent
-         TagSet tags;
-         QString savePath;
-         bool disableTempPath = false; // e.g. for imported torrents
+diff --git a/src/base/bittorrent/addtorrentparams.h b/src/base/bittorrent/addtorrentparams.h
+index 80d9839b8..8aa47f79f 100644
+--- a/src/base/bittorrent/addtorrentparams.h
++++ b/src/base/bittorrent/addtorrentparams.h
+@@ -51,8 +51,8 @@ namespace BitTorrent
+         Path savePath;
+         std::optional<bool> useDownloadPath;
+         Path downloadPath;
 -        bool sequential = false;
 -        bool firstLastPiecePriority = false;
 +        bool sequential = true;
 +        bool firstLastPiecePriority = true;
          bool addForced = false;
          std::optional<bool> addPaused;
-         QVector<DownloadPriority> filePriorities; // used if TorrentInfo is set
-diff -rupN qBittorrent-up/src/base/bittorrent/loadtorrentparams.h qBittorrent/src/base/bittorrent/loadtorrentparams.h
---- qBittorrent-up/src/base/bittorrent/loadtorrentparams.h	2021-11-05 20:26:21.000000000 +0300
-+++ qBittorrent/src/base/bittorrent/loadtorrentparams.h	2021-11-05 20:25:36.000000000 +0300
-@@ -48,7 +48,7 @@ namespace BitTorrent
-         QString savePath;
+         PathList filePaths; // used if TorrentInfo is set
+diff --git a/src/base/bittorrent/loadtorrentparams.h b/src/base/bittorrent/loadtorrentparams.h
+index 4892bece8..68ca8c014 100644
+--- a/src/base/bittorrent/loadtorrentparams.h
++++ b/src/base/bittorrent/loadtorrentparams.h
+@@ -51,7 +51,7 @@ namespace BitTorrent
          TorrentContentLayout contentLayout = TorrentContentLayout::Original;
          TorrentOperatingMode operatingMode = TorrentOperatingMode::AutoManaged;
+         bool useAutoTMM = false;
 -        bool firstLastPiecePriority = false;
 +        bool firstLastPiecePriority = true;
          bool hasSeedStatus = false;

@@ -5,12 +5,12 @@ diff -rupN qBittorrent-up/src/base/version.h.in qBittorrent/src/base/version.h.i
  #pragma once
 
  #define QBT_VERSION_MAJOR 4
--#define QBT_VERSION_MINOR 4
+-#define QBT_VERSION_MINOR 5
 -#define QBT_VERSION_BUGFIX 0
-+#define QBT_VERSION_MINOR 4
++#define QBT_VERSION_MINOR 5
 +#define QBT_VERSION_BUGFIX 0
  #define QBT_VERSION_BUILD 0
--#define QBT_VERSION_STATUS "rc1"  // Should be empty for stable releases!
+-#define QBT_VERSION_STATUS "alpha1"  // Should be empty for stable releases!
 +#define QBT_VERSION_STATUS ""  // Should be empty for stable releases!
 
  #define QBT__STRINGIFY(x) #x
@@ -21,8 +21,8 @@ diff -rupN qBittorrent-up/src/base/version.h.in qBittorrent/src/base/version.h.i
  	<key>CFBundlePackageType</key>
  	<string>APPL</string>
  	<key>CFBundleShortVersionString</key>
--	<string>4.4.0</string>
-+	<string>4.3.9</string>
+-	<string>4.5.0</string>
++	<string>4.4.1</string>
  	<key>CFBundleExecutable</key>
  	<string>${EXECUTABLE_NAME}</string>
  	<key>CFBundleIdentifier</key>

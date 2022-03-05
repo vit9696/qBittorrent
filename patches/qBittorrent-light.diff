@@ -53,22 +53,22 @@ index fa50177..ccf0be3 100644
 +
  namespace
  {
-     const QString ICONS_DIR = QStringLiteral(":icons/");
-+    const QString LIGHT_ICONS_DIR = QStringLiteral(":icons-light/");
-     const QString THEME_ICONS_DIR = QStringLiteral(":uitheme/icons/");
-     const QString CONFIG_FILE_NAME = QStringLiteral(":uitheme/config.json");
+     const Path DEFAULT_ICONS_DIR {u":icons"_qs};
++    const Path LIGHT_ICONS_DIR {u":icons-light"_qs};
+     const QString CONFIG_FILE_NAME {QStringLiteral("config.json")};
+     const QString STYLESHEET_FILE_NAME {QStringLiteral("stylesheet.qss")};
  
 @@ -192,6 +201,10 @@ QString UIThemeManager::getIconPathFromResources(const QString &iconId, const QS
              if (!fallbackIcon.isEmpty())
                  return fallbackIcon;
          }
 +    } else if (!isDarkTheme()) {
-+        const QString lightIcon = findIcon(iconId, LIGHT_ICONS_DIR);
++        const Path lightIcon = findIcon(iconId, LIGHT_ICONS_DIR);
 +        if (!lightIcon.isEmpty())
 +            return lightIcon;
      }
  
-     return findIcon(iconId, ICONS_DIR);
+     return findIcon(iconId, DEFAULT_ICONS_DIR);
 diff --git a/src/gui/uithememanager.h b/src/gui/uithememanager.h
 index becb13b..bf216e2 100644
 --- a/src/gui/uithememanager.h
