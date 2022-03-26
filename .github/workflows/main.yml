@@ -26,7 +26,8 @@ jobs:
         run: brew update
 
       - name: Install dependencies
-        run: brew install qt openssl cmake ninja boost create-dmg
+        run: brew install openssl cmake ninja boost create-dmg
+        run: brew install qt --head
 
       - name: Compile with codesign
         if: github.repository_owner == 'vit9696'
