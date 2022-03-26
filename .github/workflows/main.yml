@@ -27,6 +27,8 @@ jobs:
 
       - name: Install dependencies
         run: brew install openssl cmake ninja boost create-dmg
+
+      - name: Install qt head
         run: brew install qt --head
 
       - name: Compile with codesign
