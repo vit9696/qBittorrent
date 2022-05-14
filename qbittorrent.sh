@@ -9,7 +9,7 @@ LIBTORRENT_COMMIT="13b252e1a435f84ebbdf21452417ce533c810d1f"
 QBITTORRENT_COMMIT="538c88ced471058cbc8c420114ed5c97984cc771"
 OPENSSL_ROOT_DIR=/usr/local/opt/openssl
 OPENSSL_LIBRARIES=/usr/local/opt/openssl/lib
-QT_ROOT="$(brew --prefix qt)"
+QT_ROOT="$(brew --prefix qt@5)"
 
 SELFDIR=$(dirname $0)
 cd $SELFDIR
