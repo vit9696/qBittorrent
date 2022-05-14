@@ -5,8 +5,8 @@
 set -o pipefail     # the return value of a pipeline is the status of the last command to exit with a non-zero status
 
 MIN_MACOS_VER=10.15
-LIBTORRENT_COMMIT="9c04d24504d5e447d95e14c9f9fc6417079dec6d"
-QBITTORRENT_COMMIT="11cfe38d1c94b039e1c330759fe7b34b9c9a31f8"
+LIBTORRENT_COMMIT="13b252e1a435f84ebbdf21452417ce533c810d1f"
+QBITTORRENT_COMMIT="538c88ced471058cbc8c420114ed5c97984cc771"
 OPENSSL_ROOT_DIR=/usr/local/opt/openssl
 OPENSSL_LIBRARIES=/usr/local/opt/openssl/lib
 QT_ROOT="$(brew --prefix qt)"
@@ -64,7 +64,7 @@ mkdir build && cd build
 cmake -DCMAKE_PREFIX_PATH="${DEPSDIR}" -DCMAKE_CXX_STANDARD=17 \
   -DCMAKE_CXX_EXTENSIONS=OFF -DCMAKE_OSX_DEPLOYMENT_TARGET=${MIN_MACOS_VER} \
   -DCMAKE_BUILD_TYPE=Release -DOPENSSL_ROOT_DIR=${OPENSSL_ROOT_DIR} \
-  -DOPENSSL_LIBRARIES=${OPENSSL_ROOT_DIR} -DQT6=ON -DQt6_DIR=${QT_ROOT}/lib/cmake/Qt6 ..
+  -DOPENSSL_LIBRARIES=${OPENSSL_ROOT_DIR} -DQt5_DIR=${QT_ROOT}/lib/cmake/Qt5 ..
 make -j$(sysctl -n hw.ncpu)
 
 ${QT_ROOT}/bin/macdeployqt "qbittorrent.app"
