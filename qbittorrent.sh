@@ -53,6 +53,7 @@ cd qBittorrent
 cp -r ${SELFDIR}/graphics/* .
 git apply ${SELFDIR}/patches/qBittorrent-dark-web.diff
 git apply ${SELFDIR}/patches/qBittorrent-sequential.diff
+git apply ${SELFDIR}/patches/qBittorrent-dbus.diff
 git apply ${SELFDIR}/patches/qBittorrent-light.diff
 git apply ${SELFDIR}/patches/qBittorrent-version.diff
 
