@@ -1,0 +1,63 @@
+diff -rupN qBittorrent-up/src/gui/transferlistmodel.cpp qBittorrent/src/gui/transferlistmodel.cpp
+--- qBittorrent-up/src/gui/transferlistmodel.cpp
++++ qBittorrent/src/gui/transferlistmodel.cpp
+@@ -47,41 +47,50 @@
+
+ namespace
+ {
++    bool isDarkTheme()
++    {
++        const QPalette pal = QApplication::palette();
++        // QPalette::Base is used for the background of the Treeview
++        const QColor &color = pal.color(QPalette::Active, QPalette::Base);
++        return (color.lightness() < 127);
++    }
++
+     QColor getDefaultColorByState(const BitTorrent::TorrentState state)
+     {
++        // Color names taken from http://cloford.com/resources/colours/500col.htm
++        const bool dark = isDarkTheme();
++
+         switch (state)
+         {
+         case BitTorrent::TorrentState::Downloading:
+         case BitTorrent::TorrentState::ForcedDownloading:
+         case BitTorrent::TorrentState::DownloadingMetadata:
+         case BitTorrent::TorrentState::ForcedDownloadingMetadata:
+-            return QColorConstants::Svg::green;
+         case BitTorrent::TorrentState::StalledDownloading:
+-            return QColorConstants::Svg::mediumseagreen;
+         case BitTorrent::TorrentState::StalledUploading:
+-            return QColorConstants::Svg::cornflowerblue;
+         case BitTorrent::TorrentState::Uploading:
+         case BitTorrent::TorrentState::ForcedUploading:
+-            return QColorConstants::Svg::royalblue;
+         case BitTorrent::TorrentState::PausedDownloading:
+-            return QColorConstants::Svg::grey;
+         case BitTorrent::TorrentState::PausedUploading:
+-            return QColorConstants::Svg::darkslateblue;
+         case BitTorrent::TorrentState::QueuedDownloading:
+         case BitTorrent::TorrentState::QueuedUploading:
+-            return QColorConstants::Svg::peru;
+         case BitTorrent::TorrentState::CheckingDownloading:
+         case BitTorrent::TorrentState::CheckingUploading:
+         case BitTorrent::TorrentState::CheckingResumeData:
+         case BitTorrent::TorrentState::Moving:
+-            return QColorConstants::Svg::teal;
+         case BitTorrent::TorrentState::Error:
+         case BitTorrent::TorrentState::MissingFiles:
+         case BitTorrent::TorrentState::Unknown:
+-            return QColorConstants::Svg::red;
++            if (!dark)
++                return {0, 0, 0};
++            else
++                return {255, 255, 255};
+         default:
+             Q_ASSERT(false);
+-            return QColorConstants::Svg::red;
++            if (!dark)
++                return {0, 0, 0};
++            else
++                return {255, 255, 255};
+         }
+     }

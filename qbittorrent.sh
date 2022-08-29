@@ -51,7 +51,8 @@ cd -
 git_shallow_clone qBittorrent https://github.com/qBittorrent/qBittorrent $QBITTORRENT_COMMIT
 cd qBittorrent
 cp -r ${SELFDIR}/graphics/* .
-git apply ${SELFDIR}/patches/qBittorrent-dark-web.diff
+git apply ${SELFDIR}/patches/qBittorrent-colours.diff
+#git apply ${SELFDIR}/patches/qBittorrent-dark-web.diff
 git apply ${SELFDIR}/patches/qBittorrent-sequential.diff
 git apply ${SELFDIR}/patches/qBittorrent-dbus.diff
 git apply ${SELFDIR}/patches/qBittorrent-light.diff
