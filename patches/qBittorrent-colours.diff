@@ -61,3 +61,4 @@ diff -rupN qBittorrent-up/src/gui/transferlistmodel.cpp qBittorrent/src/gui/tran
 +                return {255, 255, 255};
          }
      }
+
