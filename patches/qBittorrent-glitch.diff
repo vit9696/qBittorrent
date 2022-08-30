@@ -1,0 +1,11 @@
+diff -rupN qBittorrent-up/src/gui/transferlistmodel.cpp qBittorrent/src/gui/transferlistfilterswidget.cpp
+--- qBittorrent-up/src/gui/transferlistfilterswidget.cpp
++++ qBittorrent/src/gui/transferlistfilterswidget.cpp
+@@ -820,7 +820,6 @@
+     scroll->setWidgetResizable(true);
+     scroll->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+-    setStyleSheet(u"QFrame {background: transparent;}"_qs);
+     scroll->setStyleSheet(u"QFrame {border: none;}"_qs);
+     vLayout->setContentsMargins(0, 0, 0, 0);
+     frameLayout->setContentsMargins(0, 2, 0, 0);

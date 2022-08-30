@@ -52,6 +52,7 @@ git_shallow_clone qBittorrent https://github.com/qBittorrent/qBittorrent $QBITTO
 cd qBittorrent
 cp -r ${SELFDIR}/graphics/* .
 git apply ${SELFDIR}/patches/qBittorrent-colours.diff
+git apply ${SELFDIR}/patches/qBittorrent-glitch.diff
 #git apply ${SELFDIR}/patches/qBittorrent-dark-web.diff
 git apply ${SELFDIR}/patches/qBittorrent-sequential.diff
 git apply ${SELFDIR}/patches/qBittorrent-dbus.diff
