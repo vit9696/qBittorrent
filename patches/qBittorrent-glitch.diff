@@ -1,6 +1,6 @@
-diff -rupN qBittorrent-up/src/gui/propertieswidget.cpp qBittorrent/src/gui/propertieswidget.cpp
---- qBittorrent-up/src/gui/propertieswidget.cpp
-+++ qBittorrent/src/gui/propertieswidget.cpp
+diff -rupN qBittorrent-up/src/gui/properties/propertieswidget.cpp qBittorrent/src/gui/properties/propertieswidget.cpp
+--- qBittorrent-up/src/gui/properties/propertieswidget.cpp
++++ qBittorrent/src/gui/properties/propertieswidget.cpp
 @@ -76,6 +76,7 @@
      , m_ui(new Ui::PropertiesWidget())
  {
