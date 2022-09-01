@@ -1,12 +1,12 @@
 diff -rupN qBittorrent-up/src/gui/properties/propertieswidget.cpp qBittorrent/src/gui/properties/propertieswidget.cpp
 --- qBittorrent-up/src/gui/properties/propertieswidget.cpp
 +++ qBittorrent/src/gui/properties/propertieswidget.cpp
-@@ -76,6 +76,7 @@
+@@ -76,7 +76,7 @@
      , m_ui(new Ui::PropertiesWidget())
  {
      m_ui->setupUi(this);
-+    setBackgroundRole(QPalette::Base);
-     setAutoFillBackground(true);
+-    setAutoFillBackground(true);
++    setAutoFillBackground(false);
 
      m_state = VISIBLE;
      
