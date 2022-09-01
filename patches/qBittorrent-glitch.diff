@@ -7,6 +7,6 @@ diff -rupN qBittorrent-up/src/gui/properties/propertieswidget.cpp qBittorrent/sr
      m_ui->setupUi(this);
 -    setAutoFillBackground(true);
 +    setAutoFillBackground(false);
-
+ 
      m_state = VISIBLE;
-     
+ 
