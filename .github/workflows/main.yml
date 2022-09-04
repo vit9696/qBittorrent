@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     branches:
-      - master
+      - qt5
   pull_request:
 
 jobs:
