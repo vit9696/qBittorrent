@@ -5,8 +5,8 @@
 set -o pipefail     # the return value of a pipeline is the status of the last command to exit with a non-zero status
 
 MIN_MACOS_VER=10.15
-LIBTORRENT_COMMIT="c513c5dca7224a8c89f98bbeb6515a7ad6d111f0"
-QBITTORRENT_COMMIT="ca897a8a3577dbe25d0c14264f342577b47ab693"
+LIBTORRENT_COMMIT="5ad22f96744de76c0afc5f2042438cc3f50341df"
+QBITTORRENT_COMMIT="987e1b544ad33dfc0a9253fbf1a810e2ca7353d7"
 OPENSSL_ROOT_DIR=/usr/local/opt/openssl
 OPENSSL_LIBRARIES=/usr/local/opt/openssl/lib
 QT_ROOT="$(brew --prefix qt)"
@@ -52,7 +52,6 @@ git_shallow_clone qBittorrent https://github.com/qBittorrent/qBittorrent $QBITTO
 cd qBittorrent
 cp -r ${SELFDIR}/graphics/* .
 git apply ${SELFDIR}/patches/qBittorrent-colours.diff
-git apply ${SELFDIR}/patches/qBittorrent-glitch.diff
 #git apply ${SELFDIR}/patches/qBittorrent-dark-web.diff
 git apply ${SELFDIR}/patches/qBittorrent-sequential.diff
 git apply ${SELFDIR}/patches/qBittorrent-dbus.diff
