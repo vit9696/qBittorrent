@@ -2,7 +2,7 @@ diff --git a/src/base/bittorrent/addtorrentparams.h b/src/base/bittorrent/addtor
 index 80d9839b8..8aa47f79f 100644
 --- a/src/base/bittorrent/addtorrentparams.h
 +++ b/src/base/bittorrent/addtorrentparams.h
-@@ -51,8 +51,8 @@ namespace BitTorrent
+@@ -51,8 +51,8 @@
          Path savePath;
          std::optional<bool> useDownloadPath;
          Path downloadPath;
@@ -12,12 +12,12 @@ index 80d9839b8..8aa47f79f 100644
 +        bool firstLastPiecePriority = true;
          bool addForced = false;
          std::optional<bool> addPaused;
-         PathList filePaths; // used if TorrentInfo is set
+         std::optional<Torrent::StopCondition> stopCondition;
 diff --git a/src/base/bittorrent/loadtorrentparams.h b/src/base/bittorrent/loadtorrentparams.h
 index 4892bece8..68ca8c014 100644
 --- a/src/base/bittorrent/loadtorrentparams.h
 +++ b/src/base/bittorrent/loadtorrentparams.h
-@@ -51,7 +51,7 @@ namespace BitTorrent
+@@ -51,7 +51,7 @@
          TorrentContentLayout contentLayout = TorrentContentLayout::Original;
          TorrentOperatingMode operatingMode = TorrentOperatingMode::AutoManaged;
          bool useAutoTMM = false;
@@ -25,4 +25,5 @@ index 4892bece8..68ca8c014 100644
 +        bool firstLastPiecePriority = true;
          bool hasSeedStatus = false;
          bool stopped = false;
+         Torrent::StopCondition stopCondition;
  
