@@ -1,64 +1,58 @@
-diff -rupN qBittorrent-up/src/gui/transferlistmodel.cpp qBittorrent/src/gui/transferlistmodel.cpp
---- qBittorrent-up/src/gui/transferlistmodel.cpp
-+++ qBittorrent/src/gui/transferlistmodel.cpp
-@@ -47,41 +47,50 @@
-
- namespace
- {
-+    bool isDarkTheme()
-+    {
-+        const QPalette pal = QApplication::palette();
-+        // QPalette::Base is used for the background of the Treeview
-+        const QColor &color = pal.color(QPalette::Active, QPalette::Base);
-+        return (color.lightness() < 127);
-+    }
-+
-     QColor getDefaultColorByState(const BitTorrent::TorrentState state)
-     {
-+        // Color names taken from http://cloford.com/resources/colours/500col.htm
-+        const bool dark = isDarkTheme();
-+
-         switch (state)
+diff -rupN qBittorrent-up/src/gui/color.h qBittorrent/src/gui/color.h
+--- qBittorrent-up/src/gui/color.h
++++ qBittorrent/src/gui/color.h
+@@ -40,33 +40,33 @@
+         namespace Dark
          {
-         case BitTorrent::TorrentState::Downloading:
-         case BitTorrent::TorrentState::ForcedDownloading:
-         case BitTorrent::TorrentState::DownloadingMetadata:
-         case BitTorrent::TorrentState::ForcedDownloadingMetadata:
--            return QColorConstants::Svg::green;
-         case BitTorrent::TorrentState::StalledDownloading:
--            return QColorConstants::Svg::mediumseagreen;
-         case BitTorrent::TorrentState::StalledUploading:
--            return QColorConstants::Svg::cornflowerblue;
-         case BitTorrent::TorrentState::Uploading:
-         case BitTorrent::TorrentState::ForcedUploading:
--            return QColorConstants::Svg::royalblue;
-         case BitTorrent::TorrentState::PausedDownloading:
--            return QColorConstants::Svg::grey;
-         case BitTorrent::TorrentState::PausedUploading:
--            return QColorConstants::Svg::darkslateblue;
-         case BitTorrent::TorrentState::QueuedDownloading:
-         case BitTorrent::TorrentState::QueuedUploading:
--            return QColorConstants::Svg::peru;
-         case BitTorrent::TorrentState::CheckingDownloading:
-         case BitTorrent::TorrentState::CheckingUploading:
-         case BitTorrent::TorrentState::CheckingResumeData:
-         case BitTorrent::TorrentState::Moving:
--            return QColorConstants::Svg::teal;
-         case BitTorrent::TorrentState::Error:
-         case BitTorrent::TorrentState::MissingFiles:
-         case BitTorrent::TorrentState::Unknown:
--            return QColorConstants::Svg::red;
-+            if (!dark)
-+                return {0, 0, 0};
-+            else
-+                return {255, 255, 255};
-         default:
-             Q_ASSERT(false);
--            return QColorConstants::Svg::red;
-+            if (!dark)
-+                return {0, 0, 0};
-+            else
-+                return {255, 255, 255};
+             // Functional variables
+-            inline const QColor accentEmphasis = 0x1f6feb;
+-            inline const QColor accentFg = 0x58a6ff;
+-            inline const QColor dangerFg = 0xf85149;
+-            inline const QColor fgMuted = 0x8b949e;
+-            inline const QColor fgSubtle = 0x6e7681;
+-            inline const QColor severeFg = 0xdb6d28;
+-            inline const QColor successEmphasis = 0x238636;
+-            inline const QColor successFg = 0x1a7f37;
++            inline const QColor accentEmphasis = 0xffffff;
++            inline const QColor accentFg = 0xffffff;
++            inline const QColor dangerFg = 0xffffff;
++            inline const QColor fgMuted = 0xffffff;
++            inline const QColor fgSubtle = 0xffffff;
++            inline const QColor severeFg = 0xffffff;
++            inline const QColor successEmphasis = 0xffffff;
++            inline const QColor successFg = 0xffffff;
+             // Scale variables
+-            inline const QColor scaleBlue4 = 0x388bfd;
+-            inline const QColor scaleYellow6 = 0x845306;
++            inline const QColor scaleBlue4 = 0xffffff;
++            inline const QColor scaleYellow6 = 0xffffff;
+         }
+
+         namespace Light
+         {
+             // Functional variables
+-            inline const QColor accentEmphasis = 0x0969da;
+-            inline const QColor accentFg = 0x0969da;
+-            inline const QColor dangerFg = 0xcf222e;
+-            inline const QColor fgMuted = 0x57606a;
+-            inline const QColor fgSubtle = 0x6e7781;
+-            inline const QColor severeFg = 0xbc4c00;
+-            inline const QColor successEmphasis = 0x2da44e;
+-            inline const QColor successFg = 0x1a7f37;
++            inline const QColor accentEmphasis = 0x000000;
++            inline const QColor accentFg = 0x000000;
++            inline const QColor dangerFg = 0x000000;
++            inline const QColor fgMuted = 0x000000;
++            inline const QColor fgSubtle = 0x000000;
++            inline const QColor severeFg = 0x000000;
++            inline const QColor successEmphasis = 0x000000;
++            inline const QColor successFg = 0x000000;
+             // Scale variables
+-            inline const QColor scaleBlue4 = 0x218bff;
+-            inline const QColor scaleYellow6 = 0x7d4e00;
++            inline const QColor scaleBlue4 = 0x000000;
++            inline const QColor scaleYellow6 = 0x000000;
          }
      }
+ }
 
