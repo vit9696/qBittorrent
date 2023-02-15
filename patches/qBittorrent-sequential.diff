@@ -11,8 +11,8 @@ index 80d9839b8..8aa47f79f 100644
 +        bool sequential = true;
 +        bool firstLastPiecePriority = true;
          bool addForced = false;
+         std::optional<bool> addToQueueTop;
          std::optional<bool> addPaused;
-         std::optional<Torrent::StopCondition> stopCondition;
 diff --git a/src/base/bittorrent/loadtorrentparams.h b/src/base/bittorrent/loadtorrentparams.h
 index 4892bece8..68ca8c014 100644
 --- a/src/base/bittorrent/loadtorrentparams.h
