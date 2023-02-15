@@ -5,53 +5,53 @@ diff -rupN qBittorrent-up/src/gui/color.h qBittorrent/src/gui/color.h
          namespace Dark
          {
              // Functional variables
--            inline const QColor accentEmphasis = 0xffffff;
--            inline const QColor accentFg = 0xffffff;
--            inline const QColor dangerFg = 0xffffff;
--            inline const QColor doneFg = 0xffffff;
--            inline const QColor fgMuted = 0xffffff;
--            inline const QColor fgSubtle = 0xffffff;
--            inline const QColor severeFg = 0xffffff;
--            inline const QColor successEmphasis = 0xffffff;
--            inline const QColor successFg = 0xffffff;
-+            inline const QColor accentEmphasis = 0x1f6feb;
-+            inline const QColor accentFg = 0x58a6ff;
-+            inline const QColor dangerFg = 0xf85149;
-+            inline const QColor doneFg = 0xa371f7;
-+            inline const QColor fgMuted = 0x8b949e;
-+            inline const QColor fgSubtle = 0x6e7681;
-+            inline const QColor severeFg = 0xdb6d28;
-+            inline const QColor successEmphasis = 0x238636;
-+            inline const QColor successFg = 0x3fb950;
+-            inline const QColor accentEmphasis = 0x1f6feb;
+-            inline const QColor accentFg = 0x58a6ff;
+-            inline const QColor dangerFg = 0xf85149;
+-            inline const QColor doneFg = 0xa371f7;
+-            inline const QColor fgMuted = 0x8b949e;
+-            inline const QColor fgSubtle = 0x6e7681;
+-            inline const QColor severeFg = 0xdb6d28;
+-            inline const QColor successEmphasis = 0x238636;
+-            inline const QColor successFg = 0x3fb950;
++            inline const QColor accentEmphasis = 0xffffff;
++            inline const QColor accentFg = 0xffffff;
++            inline const QColor dangerFg = 0xffffff;
++            inline const QColor doneFg = 0xffffff;
++            inline const QColor fgMuted = 0xffffff;
++            inline const QColor fgSubtle = 0xffffff;
++            inline const QColor severeFg = 0xffffff;
++            inline const QColor successEmphasis = 0xffffff;
++            inline const QColor successFg = 0xffffff;
              // Scale variables
--            inline const QColor scaleYellow6 = 0xffffff;
-+            inline const QColor scaleYellow6 = 0x845306;
+-            inline const QColor scaleYellow6 = 0x845306;
++            inline const QColor scaleYellow6 = 0xffffff;
          }
 
          namespace Light
          {
              // Functional variables
--            inline const QColor accentEmphasis = 0x010101;
--            inline const QColor accentFg = 0x010101;
--            inline const QColor dangerFg = 0x010101;
--            inline const QColor doneFg = 0x010101;
--            inline const QColor fgMuted = 0x010101;
--            inline const QColor fgSubtle = 0x010101;
--            inline const QColor severeFg = 0x010101;
--            inline const QColor successEmphasis = 0x010101;
--            inline const QColor successFg = 0x010101;
-+            inline const QColor accentEmphasis = 0x0969da;
-+            inline const QColor accentFg = 0x0969da;
-+            inline const QColor dangerFg = 0xcf222e;
-+            inline const QColor doneFg = 0x8250df;
-+            inline const QColor fgMuted = 0x57606a;
-+            inline const QColor fgSubtle = 0x6e7781;
-+            inline const QColor severeFg = 0xbc4c00;
-+            inline const QColor successEmphasis = 0x2da44e;
-+            inline const QColor successFg = 0x1a7f37;
+-            inline const QColor accentEmphasis = 0x0969da;
+-            inline const QColor accentFg = 0x0969da;
+-            inline const QColor dangerFg = 0xcf222e;
+-            inline const QColor doneFg = 0x8250df;
+-            inline const QColor fgMuted = 0x57606a;
+-            inline const QColor fgSubtle = 0x6e7781;
+-            inline const QColor severeFg = 0xbc4c00;
+-            inline const QColor successEmphasis = 0x2da44e;
+-            inline const QColor successFg = 0x1a7f37;
++            inline const QColor accentEmphasis = 0x010101;
++            inline const QColor accentFg = 0x010101;
++            inline const QColor dangerFg = 0x010101;
++            inline const QColor doneFg = 0x010101;
++            inline const QColor fgMuted = 0x010101;
++            inline const QColor fgSubtle = 0x010101;
++            inline const QColor severeFg = 0x010101;
++            inline const QColor successEmphasis = 0x010101;
++            inline const QColor successFg = 0x010101;
              // Scale variables
--            inline const QColor scaleYellow6 = 0x010101;
-+            inline const QColor scaleYellow6 = 0x7d4e00;
+-            inline const QColor scaleYellow6 = 0x7d4e00;
++            inline const QColor scaleYellow6 = 0x010101;
          }
      }
  }
