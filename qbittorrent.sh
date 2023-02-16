@@ -6,7 +6,7 @@ set -o pipefail     # the return value of a pipeline is the status of the last c
 
 MIN_MACOS_VER=11
 LIBTORRENT_COMMIT="2fcc721e90e882965e2c2f3ec81d4e61f5b9c10d"
-QBITTORRENT_COMMIT="6a4bb5c1b788f961579470ace5b28c1293484d2a"
+QBITTORRENT_COMMIT="1b0f5b85678c02592a628a7e67cd6a6589d53d94"
 OPENSSL_ROOT_DIR=/usr/local/opt/openssl
 OPENSSL_LIBRARIES=/usr/local/opt/openssl/lib
 QT_ROOT="$(brew --prefix qt)"
@@ -55,7 +55,7 @@ git apply ${SELFDIR}/patches/qBittorrent-colours.diff
 #git apply ${SELFDIR}/patches/qBittorrent-dark-web.diff
 git apply ${SELFDIR}/patches/qBittorrent-sequential.diff
 git apply ${SELFDIR}/patches/qBittorrent-dbus.diff
-git apply ${SELFDIR}/patches/qBittorrent-light.diff
+#git apply ${SELFDIR}/patches/qBittorrent-light.diff
 git apply ${SELFDIR}/patches/qBittorrent-version.diff
 
 mkdir build && cd build
