@@ -23,7 +23,7 @@ index 4892bece8..68ca8c014 100644
          bool useAutoTMM = false;
 -        bool firstLastPiecePriority = false;
 +        bool firstLastPiecePriority = true;
-         bool hasSeedStatus = false;
+         bool hasFinishedStatus = false;
          bool stopped = false;
          Torrent::StopCondition stopCondition;
  
