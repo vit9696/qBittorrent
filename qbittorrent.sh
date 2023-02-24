@@ -5,8 +5,8 @@
 set -o pipefail     # the return value of a pipeline is the status of the last command to exit with a non-zero status
 
 MIN_MACOS_VER=11
-LIBTORRENT_COMMIT="2fcc721e90e882965e2c2f3ec81d4e61f5b9c10d"
-QBITTORRENT_COMMIT="1b0f5b85678c02592a628a7e67cd6a6589d53d94"
+LIBTORRENT_COMMIT="356219bda36077329051b68ca253db9e7de1932d"
+QBITTORRENT_COMMIT="8df80b67f9f469a3240856f326d04da0ea221b11"
 OPENSSL_ROOT_DIR=/usr/local/opt/openssl
 OPENSSL_LIBRARIES=/usr/local/opt/openssl/lib
 QT_ROOT="$(brew --prefix qt)"
