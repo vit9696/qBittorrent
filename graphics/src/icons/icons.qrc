@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/icons-light">
+    <qresource prefix="/icons">
         <file>application-exit.svg</file>
         <file>application-rss.svg</file>
         <file>application-url.svg</file>
@@ -8,11 +8,99 @@
         <file>checked-completed.svg</file>
         <file>configure.svg</file>
         <file>connected.svg</file>
+        <file>dark/application-exit.svg</file>
+        <file>dark/application-rss.svg</file>
+        <file>dark/application-url.svg</file>
+        <file>dark/browser-cookies.svg</file>
+        <file>dark/chart-line.svg</file>
+        <file>dark/checked-completed.svg</file>
+        <file>dark/configure.svg</file>
+        <file>dark/connected.svg</file>
+        <file>dark/dialog-warning.svg</file>
+        <file>dark/directory.svg</file>
+        <file>dark/disconnected.svg</file>
+        <file>dark/download.svg</file>
+        <file>dark/downloading.svg</file>
+        <file>dark/edit-clear.svg</file>
+        <file>dark/edit-copy.svg</file>
+        <file>dark/edit-find.svg</file>
+        <file>dark/edit-rename.svg</file>
+        <file>dark/error.svg</file>
+        <file>dark/fileicon.svg</file>
+        <file>dark/filter-active.svg</file>
+        <file>dark/filter-all.svg</file>
+        <file>dark/filter-inactive.svg</file>
+        <file>dark/filter-stalled.svg</file>
+        <file>dark/firewalled.svg</file>
+        <file>dark/folder-documents.svg</file>
+        <file>dark/folder-new.svg</file>
+        <file>dark/folder-remote.svg</file>
+        <file>dark/force-recheck.svg</file>
+        <file>dark/go-bottom.svg</file>
+        <file>dark/go-down.svg</file>
+        <file>dark/go-top.svg</file>
+        <file>dark/go-up.svg</file>
+        <file>dark/hash.svg</file>
+        <file>dark/help-about.svg</file>
+        <file>dark/help-contents.svg</file>
+        <file>dark/insert-link.svg</file>
+        <file>dark/ip-blocked.svg</file>
+        <file>dark/list-add.svg</file>
+        <file>dark/list-remove.svg</file>
+        <file>dark/loading.svg</file>
+        <file>dark/mail-inbox.svg</file>
+        <file>dark/mascot.png</file>
+        <file>dark/name.svg</file>
+        <file>dark/network-connect.svg</file>
+        <file>dark/network-server.svg</file>
+        <file>dark/object-locked.svg</file>
+        <file>dark/peers-add.svg</file>
+        <file>dark/peers-remove.svg</file>
+        <file>dark/peers.svg</file>
+        <file>dark/plugins.svg</file>
+        <file>dark/preferences-advanced.svg</file>
+        <file>dark/preferences-bittorrent.svg</file>
+        <file>dark/preferences-desktop.svg</file>
+        <file>dark/preferences-webui.svg</file>
+        <file>dark/qbittorrent-tray-dark.svg</file>
+        <file>dark/qbittorrent-tray-light.svg</file>
+        <file>dark/qbittorrent-tray.svg</file>
+        <file>dark/queued.svg</file>
+        <file>dark/ratio.svg</file>
+        <file>dark/reannounce.svg</file>
+        <file>dark/security-high.svg</file>
+        <file>dark/security-low.svg</file>
+        <file>dark/set-location.svg</file>
+        <file>dark/slow_off.svg</file>
+        <file>dark/slow.svg</file>
+        <file>dark/speedometer.svg</file>
+        <file>dark/splash.png</file>
+        <file>dark/stalledDL.svg</file>
+        <file>dark/stalledUP.svg</file>
+        <file>dark/system-log-out.svg</file>
+        <file>dark/tags.svg</file>
+        <file>dark/task-complete.svg</file>
+        <file>dark/task-reject.svg</file>
+        <file>dark/torrent-creator.svg</file>
+        <file>dark/torrent-magnet.svg</file>
+        <file>dark/torrent-start-forced.svg</file>
+        <file>dark/torrent-start.svg</file>
+        <file>dark/torrent-stop.svg</file>
+        <file>dark/tracker-error.svg</file>
+        <file>dark/tracker-warning.svg</file>
+        <file>dark/trackerless.svg</file>
+        <file>dark/trackers.svg</file>
+        <file>dark/upload.svg</file>
+        <file>dark/view-categories.svg</file>
+        <file>dark/view-preview.svg</file>
+        <file>dark/view-refresh.svg</file>
+        <file>dark/view-statistics.svg</file>
+        <file>dark/wallet-open.svg</file>
         <file>dialog-warning.svg</file>
         <file>directory.svg</file>
         <file>disconnected.svg</file>
-        <file>downloading.svg</file>
         <file>download.svg</file>
+        <file>downloading.svg</file>
         <file>edit-clear.svg</file>
         <file>edit-copy.svg</file>
         <file>edit-find.svg</file>
@@ -110,8 +198,8 @@
         <file>flags/gb-eng.svg</file>
         <file>flags/gb-nir.svg</file>
         <file>flags/gb-sct.svg</file>
-        <file>flags/gb.svg</file>
         <file>flags/gb-wls.svg</file>
+        <file>flags/gb.svg</file>
         <file>flags/gd.svg</file>
         <file>flags/ge.svg</file>
         <file>flags/gf.svg</file>
@@ -319,8 +407,6 @@
         <file>preferences-bittorrent.svg</file>
         <file>preferences-desktop.svg</file>
         <file>preferences-webui.svg</file>
-        <file>qbittorrent_file.ico</file>
-        <file>qbittorrent.ico</file>
         <file>qbittorrent-tray-dark.svg</file>
         <file>qbittorrent-tray-light.svg</file>
         <file>qbittorrent-tray.svg</file>
@@ -346,9 +432,9 @@
         <file>torrent-start.svg</file>
         <file>torrent-stop.svg</file>
         <file>tracker-error.svg</file>
+        <file>tracker-warning.svg</file>
         <file>trackerless.svg</file>
         <file>trackers.svg</file>
-        <file>tracker-warning.svg</file>
         <file>upload.svg</file>
         <file>view-categories.svg</file>
         <file>view-preview.svg</file>
