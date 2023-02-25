@@ -62,9 +62,6 @@
         <file>dark/preferences-bittorrent.svg</file>
         <file>dark/preferences-desktop.svg</file>
         <file>dark/preferences-webui.svg</file>
-        <file>dark/qbittorrent-tray-dark.svg</file>
-        <file>dark/qbittorrent-tray-light.svg</file>
-        <file>dark/qbittorrent-tray.svg</file>
         <file>dark/queued.svg</file>
         <file>dark/ratio.svg</file>
         <file>dark/reannounce.svg</file>
@@ -77,6 +74,7 @@
         <file>dark/splash.png</file>
         <file>dark/stalledDL.svg</file>
         <file>dark/stalledUP.svg</file>
+        <file>dark/stopped.svg</file>
         <file>dark/system-log-out.svg</file>
         <file>dark/tags.svg</file>
         <file>dark/task-complete.svg</file>
@@ -407,9 +405,6 @@
         <file>preferences-bittorrent.svg</file>
         <file>preferences-desktop.svg</file>
         <file>preferences-webui.svg</file>
-        <file>qbittorrent-tray-dark.svg</file>
-        <file>qbittorrent-tray-light.svg</file>
-        <file>qbittorrent-tray.svg</file>
         <file>queued.svg</file>
         <file>ratio.svg</file>
         <file>reannounce.svg</file>
@@ -422,6 +417,7 @@
         <file>splash.png</file>
         <file>stalledDL.svg</file>
         <file>stalledUP.svg</file>
+        <file>stopped.svg</file>
         <file>system-log-out.svg</file>
         <file>tags.svg</file>
         <file>task-complete.svg</file>
