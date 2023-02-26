@@ -1,13 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
- <defs id="defs3051">
-   <style type="text/css" id="current-color-scheme">
-     .ColorScheme-Text {
-       color:#575757;
-     }
-     </style>
- </defs>
-   <path
-      style="fill:currentColor;fill-opacity:1;stroke:none"
-      d="m4.5 3v16l13-8z"
-      class="ColorScheme-Text" />
-</svg> 
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Generator: Apple Native CoreSVG 175.5-->
+<!DOCTYPE svg
+PUBLIC "-//W3C//DTD SVG 1.1//EN"
+       "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14.7656" height="16.5527">
+ <g>
+  <rect height="16.5527" opacity="0" width="14.7656" x="0" y="0"/>
+  <path d="M1.17188 16.5527C1.5625 16.5527 1.89453 16.3965 2.28516 16.1719L13.6719 9.58984C14.4824 9.11133 14.7656 8.79883 14.7656 8.28125C14.7656 7.76367 14.4824 7.45117 13.6719 6.98242L2.28516 0.390625C1.89453 0.166016 1.5625 0.0195312 1.17188 0.0195312C0.449219 0.0195312 0 0.566406 0 1.41602L0 15.1465C0 15.9961 0.449219 16.5527 1.17188 16.5527ZM1.66992 14.6875C1.61133 14.6875 1.57227 14.6484 1.57227 14.5703L1.57227 1.99219C1.57227 1.91406 1.61133 1.875 1.66992 1.875C1.70898 1.875 1.74805 1.89453 1.78711 1.92383L12.5977 8.17383C12.6465 8.20312 12.6855 8.23242 12.6855 8.28125C12.6855 8.33008 12.6465 8.36914 12.5977 8.38867L1.78711 14.6484C1.74805 14.668 1.70898 14.6875 1.66992 14.6875Z" fill="#000000" fill-opacity="0.85"/>
+ </g>
+</svg>
