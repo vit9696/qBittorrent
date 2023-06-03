@@ -25,5 +25,5 @@ index 4892bece8..68ca8c014 100644
 +        bool firstLastPiecePriority = true;
          bool hasFinishedStatus = false;
          bool stopped = false;
-         Torrent::StopCondition stopCondition;
+         Torrent::StopCondition stopCondition = Torrent::StopCondition::None;
  
