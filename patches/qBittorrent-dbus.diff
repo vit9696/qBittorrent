@@ -1,11 +1,10 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index c163c8c0e..881fca18d 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -26,6 +26,7 @@ include(FeatureOptionsSetup)
+@@ -23,6 +23,7 @@
+ # features, list is loosely sorted by user's interests
  feature_option(GUI "Build GUI application" ON)
  feature_option(WEBUI "Enable built-in HTTP server for remote control" ON)
- feature_option(QT6 "Build with Qt 6 instead of Qt 5" OFF)
 +feature_option(DBUS "Use DBUS" ON)
  feature_option(STACKTRACE "Enable stacktrace support" ON)
  feature_option(TESTING "Build internal testing suite" OFF)
