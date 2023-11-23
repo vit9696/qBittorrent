@@ -5,8 +5,8 @@
 set -o pipefail     # the return value of a pipeline is the status of the last command to exit with a non-zero status
 
 MIN_MACOS_VER=11
-LIBTORRENT_COMMIT="5ce4c516479085eda9327d35891b7732d6d5037b"
-QBITTORRENT_COMMIT="7bd8f262dbcd153685ead13e972afba95b7eff6d"
+LIBTORRENT_COMMIT="9c1897645265c6a450930e766ab46c02a240891f"
+QBITTORRENT_COMMIT="60eaff9fcb176353d3df79827298a5d004babc4a"
 OPENSSL_ROOT_DIR=/usr/local/opt/openssl
 OPENSSL_LIBRARIES=/usr/local/opt/openssl/lib
 QT_ROOT="$(brew --prefix qt)"
@@ -56,6 +56,7 @@ git apply ${SELFDIR}/patches/qBittorrent-sequential.diff
 git apply ${SELFDIR}/patches/qBittorrent-dbus.diff
 #git apply ${SELFDIR}/patches/qBittorrent-light.diff
 git apply ${SELFDIR}/patches/qBittorrent-version.diff
+git apply ${SELFDIR}/patches/qBittorrent-release.diff
 
 mkdir build && cd build
 cmake -DCMAKE_PREFIX_PATH="${DEPSDIR}" -DCMAKE_CXX_STANDARD=17 \
