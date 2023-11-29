@@ -4,9 +4,9 @@
 # -x / set -x / set -o xtrace  - print commands and their arguments as they are executed
 set -o pipefail     # the return value of a pipeline is the status of the last command to exit with a non-zero status
 
-MIN_MACOS_VER=11
+MIN_MACOS_VER=12
 LIBTORRENT_COMMIT="9c1897645265c6a450930e766ab46c02a240891f"
-QBITTORRENT_COMMIT="60eaff9fcb176353d3df79827298a5d004babc4a"
+QBITTORRENT_COMMIT="bfd3ce2fca804ef3d0b1712503a0e56e20aa62c7"
 OPENSSL_ROOT_DIR=/usr/local/opt/openssl
 OPENSSL_LIBRARIES=/usr/local/opt/openssl/lib
 QT_ROOT="$(brew --prefix qt)"
