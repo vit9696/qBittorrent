@@ -80,7 +80,7 @@ else
   version=$(defaults read $(pwd)/qbittorrent.app/Contents/Info CFBundleShortVersionString)
   revision="r${QBITTORRENT_EDITION}"
   mime="application/octet-stream"
-  name="qBittorrent-${version}-${revision}.dmg"
+  name="qBittorrent-${version}-${revision}-$(uname -m).dmg"
 
   if [ ! -z ${GITHUB_ENV-} ]; then
     echo "VERSION=${version}" >> "$GITHUB_ENV"
