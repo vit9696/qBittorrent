@@ -64,7 +64,7 @@ jobs:
           draft: false
           prerelease: false
           # Upload artifacts
-          artifacts: ${{ env.FILENAME }}
+          artifacts: dist/${{ env.FILENAME }}
           artifactContentType: ${{ env.CONTENT_TYPE }}
           # Allow parallel releases, which only add new artifacts.
           allowUpdates: true
