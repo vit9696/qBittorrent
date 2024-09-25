@@ -6,7 +6,7 @@ set -o pipefail     # the return value of a pipeline is the status of the last c
 
 MIN_MACOS_VER=12
 LIBTORRENT_COMMIT="2ab8fedabb7716947edc77958da6d0b5e1040df9"
-QBITTORRENT_COMMIT="1c43286616e5c1a6420f9d1049ae860dbe0c2d6f"
+QBITTORRENT_COMMIT="a23f45cc70e7bb32924ef01f080f73dd1c83d2be"
 OPENSSL_ROOT_DIR=/usr/local/opt/openssl
 OPENSSL_LIBRARIES=/usr/local/opt/openssl/lib
 QT_ROOT="$(brew --prefix qt)"
