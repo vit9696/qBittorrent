@@ -30,6 +30,9 @@ jobs:
       - name: Update brew
         run: brew update
 
+      - name: delete python
+        run: brew uninstall python
+
       - name: Install dependencies
         run: brew install openssl qt cmake ninja boost create-dmg
 
