@@ -31,7 +31,7 @@ jobs:
         run: brew update
 
       - name: delete python
-        run: brew uninstall python
+        run: brew uninstall --ignore-dependencies python
 
       - name: Install dependencies
         run: brew install openssl qt cmake ninja boost create-dmg
