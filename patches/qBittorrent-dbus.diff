@@ -1,11 +1,11 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -23,6 +23,7 @@
+@@ -21,6 +21,7 @@
+ include(FeatureOptionsSetup)
+
  # features, list is loosely sorted by user's interests
++feature_option(DBUS "Use DBUS" ON)
  feature_option(GUI "Build GUI application" ON)
  feature_option(WEBUI "Enable built-in HTTP server for remote control" ON)
-+feature_option(DBUS "Use DBUS" ON)
- feature_option(STACKTRACE "Enable stacktrace support" ON)
- feature_option(TESTING "Build internal testing suite" OFF)
- feature_option(VERBOSE_CONFIGURE "Show information about PACKAGES_FOUND and PACKAGES_NOT_FOUND in the configure output (only useful for debugging the CMake build scripts)" OFF)
+ feature_option(PLUGINS "Enable built-in Lua plugins engine" ON)
