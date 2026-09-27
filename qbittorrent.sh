@@ -4,9 +4,9 @@
 # -x / set -x / set -o xtrace  - print commands and their arguments as they are executed
 set -o pipefail     # the return value of a pipeline is the status of the last command to exit with a non-zero status
 
-MIN_MACOS_VER=13
-QBITTORRENT_COMMIT="5a07050da1ced1f3a03280b4270c448c2d0f2344"
-LIBTORRENT_COMMIT="6c92c66c19f64aae75379aa22f45dd6caeaa96f7"
+MIN_MACOS_VER=15
+QBITTORRENT_COMMIT="784a6e188ecdb2e6896f2cd4a2d12e9cece08cbe"
+LIBTORRENT_COMMIT="94bffc25272b6833108d601fc0d824c344c48bc3"
 OPENSSL_ROOT_DIR=/usr/local/opt/openssl
 OPENSSL_LIBRARIES=/usr/local/opt/openssl/lib
 QT_ROOT="$(brew --prefix qt)"
@@ -57,6 +57,7 @@ git apply ${SELFDIR}/patches/qBittorrent-dbus.diff
 #git apply ${SELFDIR}/patches/qBittorrent-light.diff
 git apply ${SELFDIR}/patches/qBittorrent-version.diff
 git apply ${SELFDIR}/patches/qBittorrent-release.diff
+git apply ${SELFDIR}/patches/qBittorrent-font_fix.diff
 
 mkdir build && cd build
 cmake -DCMAKE_PREFIX_PATH="${DEPSDIR}" -DCMAKE_CXX_STANDARD=17 \
