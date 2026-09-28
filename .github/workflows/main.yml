@@ -11,7 +11,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-15-intel, xcode-27]
+        os: [macos-26-intel, xcode-27]
 
     name: Build qBittorrent for ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
@@ -34,7 +34,10 @@ jobs:
 #        run: brew uninstall --ignore-dependencies --force $(brew list)
 
       - name: Install dependencies
-        run: brew install openssl qt cmake ninja boost create-dmg
+        run: brew install openssl cmake ninja boost create-dmg
+
+      - name: Install qt
+        run: brew install --HEAD qt
 
       - name: Compile with codesign
         if: github.repository_owner == 'vit9696'

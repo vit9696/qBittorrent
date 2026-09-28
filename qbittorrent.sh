@@ -37,7 +37,7 @@ git_shallow_clone() {
 git_shallow_clone libtorrent https://github.com/arvidn/libtorrent $LIBTORRENT_COMMIT
 cd libtorrent
 
-cmake -Wno-dev -B build -G Ninja -DCMAKE_PREFIX_PATH=${DEPSDIR} -DCMAKE_CXX_STANDARD=17 \
+cmake -Wno-dev -B build -G Ninja -DCMAKE_PREFIX_PATH=${DEPSDIR} -DCMAKE_CXX_STANDARD=23 \
   -DCMAKE_CXX_EXTENSIONS=OFF -DCMAKE_OSX_DEPLOYMENT_TARGET=${MIN_MACOS_VER} \
   -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -Ddeprecated-functions=OFF \
   -DCMAKE_INSTALL_PREFIX=${DEPSDIR} -DOPENSSL_ROOT_DIR=${OPENSSL_ROOT_DIR} \
@@ -60,7 +60,7 @@ git apply ${SELFDIR}/patches/qBittorrent-release.diff
 git apply ${SELFDIR}/patches/qBittorrent-font_fix.diff
 
 mkdir build && cd build
-cmake -DCMAKE_PREFIX_PATH="${DEPSDIR}" -DCMAKE_CXX_STANDARD=17 \
+cmake -DCMAKE_PREFIX_PATH="${DEPSDIR}" -DCMAKE_CXX_STANDARD=23 \
   -DCMAKE_CXX_EXTENSIONS=OFF -DCMAKE_OSX_DEPLOYMENT_TARGET=${MIN_MACOS_VER} \
   -DCMAKE_BUILD_TYPE=Release -DOPENSSL_ROOT_DIR=${OPENSSL_ROOT_DIR} \
   -DOPENSSL_LIBRARIES=${OPENSSL_ROOT_DIR} -DQT6=ON -DQt6_DIR=${QT_ROOT}/lib/cmake/Qt6 ..
