@@ -33,11 +33,14 @@ jobs:
 #      - name: delete python
 #        run: brew uninstall --ignore-dependencies --force $(brew list)
 
-      - name: Install dependencies
-        run: brew install openssl ninja boost create-dmg qt
+      - name: unInstall cmake
+        run: brew uninstall --ignore-dependencies --force cmake
 
       - name: Install cmake
         run: brew install --HEAD cmake
+
+      - name: Install dependencies
+        run: brew install openssl ninja boost create-dmg qt
 
       - name: Compile with codesign
         if: github.repository_owner == 'vit9696'
