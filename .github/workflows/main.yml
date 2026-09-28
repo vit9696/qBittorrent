@@ -33,14 +33,18 @@ jobs:
 #      - name: delete python
 #        run: brew uninstall --ignore-dependencies --force $(brew list)
 
-      - name: unInstall cmake
-        run: brew uninstall --ignore-dependencies --force cmake
-
-      - name: Install cmake
-        run: brew install --HEAD cmake
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v4
+        with:
+          version: '6.12.0-beta4'
+          host: mac
+          target: desktop
+          arch: clang_64
+          modules: qt5compat
+          cache: true
 
       - name: Install dependencies
-        run: brew install openssl ninja boost create-dmg qt
+        run: brew install cmake openssl ninja boost create-dmg
 
       - name: Compile with codesign
         if: github.repository_owner == 'vit9696'

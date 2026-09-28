@@ -1,25 +1,14 @@
 diff -rupN qBittorrent-up/src/gui/uithememanager.cpp qBittorrent/src/gui/uithememanager.cpp
 --- qBittorrent-up/src/gui/uithememanager.cpp
 +++ qBittorrent/src/gui/uithememanager.cpp
-@@ -53,15 +53,16 @@
+@@ -307,10 +307,10 @@ void UIThemeManager::applyStyleSheet() const
+
+ void UIThemeManager::onColorSchemeChanged()
  {
-     bool isDarkTheme()
-     {
-+        if (const Qt::ColorScheme scheme = qApp->styleHints()->colorScheme()
-+                ; scheme != Qt::ColorScheme::Unknown)
-+        {
-+            return (scheme == Qt::ColorScheme::Dark);
-+        }
-+
-         const QPalette palette = qApp->palette();
-         const QColor &color = palette.color(QPalette::Active, QPalette::Base);
-         return (color.lightness() < 127);
-     }
--
--    Path resolveThemePath(const Path &themePath)
--    {
--        return (themePath.isAbsolute() ? themePath : (Profile::instance()->location(SpecialFolder::Config) / themePath));
--    }
+-    emit themeChanged();
+     // workaround to refresh styled controls once color scheme is changed
+     QApplication::setStyle(QApplication::style()->name());
++    emit themeChanged();
  }
 
- UIThemeManager *UIThemeManager::m_instance = nullptr;
+ QIcon UIThemeManager::getIcon(const QString &iconId, [[maybe_unused]] const QString &fallback, const ColorMode colorMode) const
