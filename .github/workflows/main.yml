@@ -34,10 +34,10 @@ jobs:
 #        run: brew uninstall --ignore-dependencies --force $(brew list)
 
       - name: Install dependencies
-        run: brew install openssl cmake ninja boost create-dmg
+        run: brew install openssl ninja boost create-dmg qt
 
-      - name: Install qt
-        run: brew install --HEAD qt
+      - name: Install cmake
+        run: brew install --HEAD cmake
 
       - name: Compile with codesign
         if: github.repository_owner == 'vit9696'
