@@ -6,7 +6,6 @@ set -o pipefail     # the return value of a pipeline is the status of the last c
 
 MIN_MACOS_VER=15
 QBITTORRENT_COMMIT="d6d86ff1eca92802a1f34a7bfd20dbd02c1040ee"
-LIBTORRENT_COMMIT="2bc9c4f7dacb70e89f7ac73e9fa7fc02ed2b395a"
 OPENSSL_ROOT_DIR=/usr/local/opt/openssl
 OPENSSL_LIBRARIES=/usr/local/opt/openssl/lib
 QT_ROOT="${QT_ROOT_DIR}"
@@ -17,7 +16,7 @@ SELFDIR=$(pwd)
 cd -
 WORKDIR=${SELFDIR}/build
 echo "Current working directory: ${WORKDIR}"
-DEPSDIR="${WORKDIR%/}/ext"      # all dependencies will be placed here
+DEPSDIR="${WORKDIR%/}/ext"      # local dependency prefix (libtorrent comes from Homebrew)
 rm -rf ${WORKDIR} ${SELFDIR}/dist
 mkdir -p ${WORKDIR}/ext
 cd ${WORKDIR}
@@ -33,19 +32,7 @@ git_shallow_clone() {
   cd -
 }
 
-# download and build libtorrent
-git_shallow_clone libtorrent https://github.com/arvidn/libtorrent $LIBTORRENT_COMMIT
-cd libtorrent
-
-cmake -Wno-dev -B build -G Ninja -DCMAKE_PREFIX_PATH=${DEPSDIR} -DCMAKE_CXX_STANDARD=23 \
-  -DCMAKE_CXX_EXTENSIONS=OFF -DCMAKE_OSX_DEPLOYMENT_TARGET=${MIN_MACOS_VER} \
-  -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -Ddeprecated-functions=OFF \
-  -DCMAKE_INSTALL_PREFIX=${DEPSDIR} -DOPENSSL_ROOT_DIR=${OPENSSL_ROOT_DIR} \
-  -DOPENSSL_LIBRARIES=${OPENSSL_ROOT_DIR}
-cmake --build build
-cmake --install build
-
-cd -
+# libtorrent is provided by Homebrew (brew install libtorrent-rasterbar)
 
 # Download and build qBittorrent
 git_shallow_clone qBittorrent https://github.com/qBittorrent/qBittorrent $QBITTORRENT_COMMIT
@@ -60,7 +47,7 @@ git apply ${SELFDIR}/patches/qBittorrent-release.diff
 git apply ${SELFDIR}/patches/qBittorrent-font_fix.diff
 
 mkdir build && cd build
-cmake -DCMAKE_PREFIX_PATH="${DEPSDIR}" -DCMAKE_CXX_STANDARD=23 \
+cmake -DCMAKE_PREFIX_PATH="${DEPSDIR}:$(brew --prefix libtorrent-rasterbar)" -DCMAKE_CXX_STANDARD=23 \
   -DCMAKE_CXX_EXTENSIONS=OFF -DCMAKE_OSX_DEPLOYMENT_TARGET=${MIN_MACOS_VER} \
   -DCMAKE_BUILD_TYPE=Release -DOPENSSL_ROOT_DIR=${OPENSSL_ROOT_DIR} \
   -DOPENSSL_LIBRARIES=${OPENSSL_ROOT_DIR} -DQT6=ON -DQt6_DIR=${QT_ROOT}/lib/cmake/Qt6 ..
