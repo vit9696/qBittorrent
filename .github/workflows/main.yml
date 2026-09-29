@@ -30,8 +30,26 @@ jobs:
       - name: Update brew
         run: brew update
 
-#      - name: delete python
-#        run: brew uninstall --ignore-dependencies --force $(brew list)
+      - name: Prepare Homebrew dependency version key
+        run: |
+          brew deps --include-build --formula \
+            cmake openssl ninja boost libtorrent-rasterbar create-dmg \
+            | sort -u > homebrew-deps.txt
+          brew info --json=v2 --formula $(cat homebrew-deps.txt) \
+            > homebrew-deps.json
+
+      - name: Restore cached Intel Homebrew dependencies
+        id: homebrew-cache
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            /usr/local/Cellar
+            /usr/local/opt
+            /usr/local/var/homebrew/linked
+            ~/Library/Caches/Homebrew
+          key: homebrew-intel-macos26-${{ hashFiles('homebrew-deps.json') }}
+          restore-keys: |
+            homebrew-intel-macos26-
 
       - name: Install Qt
         uses: jurplel/install-qt-action@v4
@@ -43,8 +61,25 @@ jobs:
           modules: qt5compat
           cache: true
 
-      - name: Install dependencies
-        run: brew install cmake openssl ninja boost libtorrent-rasterbar create-dmg
+      - name: Install or update dependencies
+        run: |
+          brew install cmake openssl ninja boost libtorrent-rasterbar create-dmg
+
+          outdated="$(brew outdated --formula $(cat homebrew-deps.txt))"
+          if [ -n "$outdated" ]; then
+            brew upgrade $outdated
+          fi
+
+      - name: Save Intel Homebrew dependencies
+        if: steps.homebrew-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            /usr/local/Cellar
+            /usr/local/opt
+            /usr/local/var/homebrew/linked
+            ~/Library/Caches/Homebrew
+          key: homebrew-intel-macos26-${{ hashFiles('homebrew-deps.json') }}
 
       - name: Compile with codesign
         if: github.repository_owner == 'vit9696'
