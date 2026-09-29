@@ -30,9 +30,6 @@ jobs:
       - name: Update brew
         run: brew update
 
-      - name: Upgrade brew
-        run: brew upgrade
-
 #      - name: delete python
 #        run: brew uninstall --ignore-dependencies --force $(brew list)
 
