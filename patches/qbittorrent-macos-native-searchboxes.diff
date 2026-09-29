@@ -1,0 +1,16 @@
+diff -rupN qBittorrent-up/src/gui/lineedit.cpp qBittorrent/src/gui/lineedit.cpp
+--- qBittorrent-up/src/gui/lineedit.cpp
++++ qBittorrent/src/gui/lineedit.cpp
+@@ -55,12 +54,6 @@ LineEdit::LineEdit(QWidget *parent)
+     setClearButtonEnabled(true);
+     setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+
+-#ifdef Q_OS_MACOS
+-    QPalette pal = palette();
+-    pal.setBrush(QPalette::Base, Qt::transparent);
+-    setPalette(pal);
+-#endif
+-
+     m_delayedTextChangedTimer->setSingleShot(true);
+     connect(m_delayedTextChangedTimer, &QTimer::timeout, this, [this]
+     {
