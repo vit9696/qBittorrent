@@ -1,33 +1,30 @@
-diff --git qBittorrent-up/src/gui/mainwindow.cpp qBittorrent/src/gui/mainwindow.cpp
+diff -rupN qBittorrent-up/src/gui/mainwindow.cpp qBittorrent/src/gui/mainwindow.cpp
 --- qBittorrent-up/src/gui/mainwindow.cpp
 +++ qBittorrent/src/gui/mainwindow.cpp
-@@ -212,6 +212,13 @@ MainWindow::MainWindow(IGUIApplication *app, const WindowState initialState, cons
-     // Torrent filter
+@@ -241,6 +241,11 @@ MainWindow::MainWindow(IGUIApplication *app, const WindowState initialState, con
+     columnFilterSpacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
+
      m_columnFilterEdit = new LineEdit;
-     m_columnFilterEdit->setPlaceholderText(tr("Filter torrents..."));
 +#ifdef Q_OS_MACOS
 +    m_columnFilterEdit->setStyleSheet(QStringLiteral(
-+        "QLineEdit { border: 1px solid palette(mid); border-radius: 8px;"
-+        " padding: 2px 7px; background-color: palette(base); }"
-+        "QLineEdit:focus { border: 2px solid palette(highlight);"
-+        " padding: 1px 6px; }"));
++        "QLineEdit { border: 1px solid palette(mid); border-radius: 8px; padding: 1px 7px;"
++        " background-color: palette(base); }"));
 +#endif
-     m_columnFilterEdit->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-     m_columnFilterEdit->setFixedWidth(200);
      m_columnFilterEdit->setContextMenuPolicy(Qt::CustomContextMenu);
-diff --git qBittorrent-up/src/gui/properties/propertieswidget.cpp qBittorrent/src/gui/properties/propertieswidget.cpp
+     m_columnFilterEdit->setFixedWidth(200);
+     m_columnFilterEdit->setPlaceholderText(tr("Filter torrents..."));
+diff -rupN qBittorrent-up/src/gui/properties/propertieswidget.cpp qBittorrent/src/gui/properties/propertieswidget.cpp
 --- qBittorrent-up/src/gui/properties/propertieswidget.cpp
 +++ qBittorrent/src/gui/properties/propertieswidget.cpp
-@@ -79,5 +79,12 @@ PropertiesWidget::PropertiesWidget(QWidget *parent)
+@@ -79,6 +79,11 @@ PropertiesWidget::PropertiesWidget(QWidget *parent)
+
      // Torrent content filtering
      m_contentFilterLine = new LineEdit(this);
-     m_contentFilterLine->setPlaceholderText(tr("Filter files..."));
 +#ifdef Q_OS_MACOS
 +    m_contentFilterLine->setStyleSheet(QStringLiteral(
-+        "QLineEdit { border: 1px solid palette(mid); border-radius: 8px;"
-+        " padding: 2px 7px; background-color: palette(base); }"
-+        "QLineEdit:focus { border: 2px solid palette(highlight);"
-+        " padding: 1px 6px; }"));
++        "QLineEdit { border: 1px solid palette(mid); border-radius: 8px; padding: 1px 7px;"
++        " background-color: palette(base); }"));
 +#endif
+     m_contentFilterLine->setPlaceholderText(tr("Filter files..."));
      m_contentFilterLine->setFixedWidth(300);
      m_contentFilterLine->setContextMenuPolicy(Qt::CustomContextMenu);
