@@ -30,55 +30,9 @@ jobs:
       - name: Update brew
         run: brew update
 
-      - name: Prepare Homebrew cache
-        id: homebrew-cache-key
-        run: |
-          ARCH="$(uname -m)"
-          BREW_PREFIX="$(brew --prefix)"
-
-          echo "BREW_PREFIX=${BREW_PREFIX}" >> "$GITHUB_ENV"
-          echo "BREW_ARCH=${ARCH}" >> "$GITHUB_ENV"
-
-          brew list --formula --versions | sort > homebrew-installed-versions.txt
-          KEY_HASH="$(shasum -a 256 homebrew-installed-versions.txt | cut -d ' ' -f 1)"
-          echo "KEY_HASH=${KEY_HASH}" >> "$GITHUB_ENV"
-          echo "KEY_HASH=${KEY_HASH}" >> "$GITHUB_OUTPUT"
-
-      - name: Restore Homebrew cache
-        id: homebrew-cache
-        uses: actions/cache/restore@v4
-        with:
-          path: |
-            ${{ env.BREW_PREFIX }}/Cellar
-            ${{ env.BREW_PREFIX }}/opt
-            ${{ env.BREW_PREFIX }}/var/homebrew/linked
-            ~/Library/Caches/Homebrew
-          key: homebrew-${{ env.BREW_ARCH }}-${{ runner.os }}-${{ hashFiles('homebrew-installed-versions.txt') }}
-          restore-keys: |
-            homebrew-${{ env.BREW_ARCH }}-${{ runner.os }}-
-
       - name: Install or update dependencies
         run: |
           brew install cmake openssl ninja boost libtorrent-rasterbar zlib create-dmg
-
-      - name: Prepare updated Homebrew cache key
-        id: homebrew-updated-key
-        run: |
-          brew list --formula --versions | sort > homebrew-installed-versions.txt
-          KEY_HASH="$(shasum -a 256 homebrew-installed-versions.txt | cut -d ' ' -f 1)"
-          echo "KEY_HASH=${KEY_HASH}" >> "$GITHUB_ENV"
-          echo "KEY_HASH=${KEY_HASH}" >> "$GITHUB_OUTPUT"
-
-      - name: Save updated Homebrew cache
-        if: steps.homebrew-updated-key.outputs.KEY_HASH != '' && steps.homebrew-updated-key.outputs.KEY_HASH != steps.homebrew-cache.outputs.cache-matched-key
-        uses: actions/cache/save@v4
-        with:
-          path: |
-            ${{ env.BREW_PREFIX }}/Cellar
-            ${{ env.BREW_PREFIX }}/opt
-            ${{ env.BREW_PREFIX }}/var/homebrew/linked
-            ~/Library/Caches/Homebrew
-          key: homebrew-${{ env.BREW_ARCH }}-${{ runner.os }}-${{ env.KEY_HASH }}
 
       - name: Install Qt
         uses: jurplel/install-qt-action@v4
@@ -99,7 +53,6 @@ jobs:
         run: |
           curl -OL "https://github.com/acidanthera/ocbuild/raw/master/codesign/appsign.sh" || exit 1
           chmod a+x appsign.sh || exit 1
-          brew unlink create-dmg cmake ninja boost libtorrent-rasterbar zlib openssl@3 openssl@4 && brew link create-dmg cmake ninja boost libtorrent-rasterbar zlib openssl@4 || exit 1
           DEPLOY_SCRIPT="$(pwd)/appsign.sh" ./qbittorrent.sh
 
       - name: Compile without codesign
