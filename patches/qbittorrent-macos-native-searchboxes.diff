@@ -1,16 +1,35 @@
 diff -rupN qBittorrent-up/src/gui/lineedit.cpp qBittorrent/src/gui/lineedit.cpp
 --- qBittorrent-up/src/gui/lineedit.cpp
 +++ qBittorrent/src/gui/lineedit.cpp
-@@ -55,12 +54,6 @@ LineEdit::LineEdit(QWidget *parent)
+@@ -32,12 +32,13 @@
+ #include <chrono>
+
+ #include <QAction>
+ #include <QKeyEvent>
+ #include <QPalette>
+ #include <QTimer>
++#include <QStyleFactory>
+
+ #include "base/global.h"
+ #include "uithememanager.h"
+
+ using namespace std::chrono_literals;
+
+@@ -54,15 +55,14 @@
+     addAction(action, QLineEdit::LeadingPosition);
+
      setClearButtonEnabled(true);
      setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
 
--#ifdef Q_OS_MACOS
+ #ifdef Q_OS_MACOS
 -    QPalette pal = palette();
 -    pal.setBrush(QPalette::Base, Qt::transparent);
 -    setPalette(pal);
--#endif
--
++    if (QStyle *macStyle = QStyleFactory::create(QStringLiteral("macos")))
++        setStyle(macStyle);
+ #endif
+
      m_delayedTextChangedTimer->setSingleShot(true);
      connect(m_delayedTextChangedTimer, &QTimer::timeout, this, [this]
      {
+         emit textUpdated(text());
