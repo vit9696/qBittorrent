@@ -99,7 +99,7 @@ jobs:
         run: |
           curl -OL "https://github.com/acidanthera/ocbuild/raw/master/codesign/appsign.sh" || exit 1
           chmod a+x appsign.sh || exit 1
-          brew link --overwrite create-dmg || exit 1
+          brew unlink create-dmg && brew link create-dmg || exit 1
           export PATH="$(brew --prefix)/bin:$PATH"
           command -v create-dmg || exit 1
           DEPLOY_SCRIPT="$(pwd)/appsign.sh" ./qbittorrent.sh
