@@ -69,7 +69,7 @@ jobs:
 
       - name: Install or update dependencies
         run: |
-          brew install cmake openssl ninja boost libtorrent-rasterbar create-dmg
+          brew install cmake openssl ninja boost libtorrent-rasterbar zlib create-dmg
 
       - name: Prepare updated Homebrew cache key
         id: homebrew-updated-key
