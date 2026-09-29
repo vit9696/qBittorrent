@@ -1,44 +1,33 @@
-diff -rupN qBittorrent-up/src/gui/lineedit.cpp qBittorrent/src/gui/lineedit.cpp
---- qBittorrent-up/src/gui/lineedit.cpp
-+++ qBittorrent/src/gui/lineedit.cpp
-@@ -32,12 +32,13 @@
- #include <chrono>
-
- #include <QAction>
- #include <QKeyEvent>
- #include <QPalette>
- #include <QTimer>
-+#include <QStyleFactory>
-
- #include "base/global.h"
- #include "uithememanager.h"
-
- using namespace std::chrono_literals;
-
-@@ -54,15 +55,20 @@
-     addAction(action, QLineEdit::LeadingPosition);
-
-     setClearButtonEnabled(true);
-     setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
-
- #ifdef Q_OS_MACOS
--    QPalette pal = palette();
--    pal.setBrush(QPalette::Base, Qt::transparent);
--    setPalette(pal);
-+    if (QStyle *macStyle = QStyleFactory::create(QStringLiteral("macos")))
-+        setStyle(macStyle);
-+
-+    setStyleSheet(QStringLiteral(
-+        "QLineEdit {"
-+        " border: 1px solid palette(mid);"
-+        " border-radius: 8px;"
-+        " background: palette(base);"
-+        " padding: 1px 4px;"
-+        "}"
-+    ));
- #endif
-
-     m_delayedTextChangedTimer->setSingleShot(true);
-     connect(m_delayedTextChangedTimer, &QTimer::timeout, this, [this]
-     {
-         emit textUpdated(text());
+diff --git qBittorrent-up/src/gui/mainwindow.cpp qBittorrent/src/gui/mainwindow.cpp
+--- qBittorrent-up/src/gui/mainwindow.cpp
++++ qBittorrent/src/gui/mainwindow.cpp
+@@ -212,6 +212,13 @@ MainWindow::MainWindow(IGUIApplication *app, const WindowState initialState, cons
+     // Torrent filter
+     m_columnFilterEdit = new LineEdit;
+     m_columnFilterEdit->setPlaceholderText(tr("Filter torrents..."));
++#ifdef Q_OS_MACOS
++    m_columnFilterEdit->setStyleSheet(QStringLiteral(
++        "QLineEdit { border: 1px solid palette(mid); border-radius: 8px;"
++        " padding: 2px 7px; background-color: palette(base); }"
++        "QLineEdit:focus { border: 2px solid palette(highlight);"
++        " padding: 1px 6px; }"));
++#endif
+     m_columnFilterEdit->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+     m_columnFilterEdit->setFixedWidth(200);
+     m_columnFilterEdit->setContextMenuPolicy(Qt::CustomContextMenu);
+diff --git qBittorrent-up/src/gui/properties/propertieswidget.cpp qBittorrent/src/gui/properties/propertieswidget.cpp
+--- qBittorrent-up/src/gui/properties/propertieswidget.cpp
++++ qBittorrent/src/gui/properties/propertieswidget.cpp
+@@ -79,5 +79,12 @@ PropertiesWidget::PropertiesWidget(QWidget *parent)
+     // Torrent content filtering
+     m_contentFilterLine = new LineEdit(this);
+     m_contentFilterLine->setPlaceholderText(tr("Filter files..."));
++#ifdef Q_OS_MACOS
++    m_contentFilterLine->setStyleSheet(QStringLiteral(
++        "QLineEdit { border: 1px solid palette(mid); border-radius: 8px;"
++        " padding: 2px 7px; background-color: palette(base); }"
++        "QLineEdit:focus { border: 2px solid palette(highlight);"
++        " padding: 1px 6px; }"));
++#endif
+     m_contentFilterLine->setFixedWidth(300);
+     m_contentFilterLine->setContextMenuPolicy(Qt::CustomContextMenu);
