@@ -15,7 +15,7 @@ diff -rupN qBittorrent-up/src/gui/lineedit.cpp qBittorrent/src/gui/lineedit.cpp
 
  using namespace std::chrono_literals;
 
-@@ -54,15 +55,14 @@
+@@ -54,15 +55,20 @@
      addAction(action, QLineEdit::LeadingPosition);
 
      setClearButtonEnabled(true);
@@ -27,6 +27,15 @@ diff -rupN qBittorrent-up/src/gui/lineedit.cpp qBittorrent/src/gui/lineedit.cpp
 -    setPalette(pal);
 +    if (QStyle *macStyle = QStyleFactory::create(QStringLiteral("macos")))
 +        setStyle(macStyle);
++
++    setStyleSheet(QStringLiteral(
++        "QLineEdit {"
++        " border: 1px solid palette(mid);"
++        " border-radius: 8px;"
++        " background: palette(base);"
++        " padding: 1px 4px;"
++        "}"
++    ));
  #endif
 
      m_delayedTextChangedTimer->setSingleShot(true);

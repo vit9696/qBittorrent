@@ -1,0 +1,148 @@
+--- a/src/gui/uithememanager.h
++++ b/src/gui/uithememanager.h
+@@ -79,12 +79,15 @@
+     void updateSystemColorMode();
+ #endif
+
+ signals:
+     void themeChanged();
+
++    class DynamicIconEngine;
++    friend class DynamicIconEngine;
++
+ private:
+     UIThemeManager(); // singleton class
+
+     void applyPalette() const;
+     void applyStyleSheet() const;
+     void onColorSchemeChanged();
+@@ -103,12 +106,13 @@
+     SettingValue<TrayIconStyle> m_trayIconStyleSetting;
+ #if (defined(Q_OS_UNIX) && !defined(Q_OS_MACOS))
+     const bool m_useSystemIcons;
+ #endif
+     std::unique_ptr<UIThemeSource> m_themeSource;
+     mutable QHash<QString, QIcon> m_icons;
++    mutable QHash<QString, QIcon> m_themedIcons;
+     mutable QHash<QString, QIcon> m_darkModeIcons;
+     mutable QHash<QString, QIcon> m_flags;
+
+ #ifdef Q_OS_WIN
+     ColorMode m_systemColorMode = ColorMode::Light;
+ #endif
+--- a/src/gui/uithememanager.cpp
++++ b/src/gui/uithememanager.cpp
+@@ -28,12 +28,14 @@
+  * delete this exception statement from your version.
+  */
+
+ #include "uithememanager.h"
+
+ #include <QApplication>
++#include <QIconEngine>
++#include <QPainter>
+ #include <QPalette>
+ #include <QPixmapCache>
+ #include <QResource>
+ #include <QStyle>
+ #include <QStyleHints>
+
+@@ -45,12 +47,76 @@
+
+ #ifdef Q_OS_WIN
+ #include "base/utils/reg.h"
+ #endif
+
+ using namespace Qt::Literals::StringLiterals;
++
++class UIThemeManager::DynamicIconEngine final : public QIconEngine
++{
++public:
++    DynamicIconEngine(const UIThemeManager *manager, const QString &iconId, const QString &fallback)
++        : m_manager {manager}
++        , m_iconId {iconId}
++        , m_fallback {fallback}
++    {
++    }
++
++    DynamicIconEngine(const DynamicIconEngine &) = default;
++
++    QIconEngine *clone() const override
++    {
++        return new DynamicIconEngine {*this};
++    }
++
++    void paint(QPainter *painter, const QRect &rect, QIcon::Mode mode, QIcon::State state) override
++    {
++        currentIcon().paint(painter, rect, Qt::AlignCenter, mode, state);
++    }
++
++    QPixmap pixmap(const QSize &size, QIcon::Mode mode, QIcon::State state) override
++    {
++        return currentIcon().pixmap(size, mode, state);
++    }
++
++    QSize actualSize(const QSize &size, QIcon::Mode mode, QIcon::State state) override
++    {
++        return currentIcon().actualSize(size, mode, state);
++    }
++
++    QList<QSize> availableSizes(QIcon::Mode mode, QIcon::State state) override
++    {
++        return currentIcon().availableSizes(mode, state);
++    }
++
++    bool isNull() override
++    {
++        return currentIcon().isNull();
++    }
++
++    QString iconName() override
++    {
++        return m_iconId;
++    }
++
++    QString key() const override
++    {
++        return u"qBittorrentDynamicIcon"_s;
++    }
++
++private:
++    QIcon currentIcon() const
++    {
++        const ColorMode colorMode = isDarkTheme() ? ColorMode::Dark : ColorMode::Light;
++        return m_manager->getIcon(m_iconId, m_fallback, colorMode);
++    }
++
++    const UIThemeManager *m_manager;
++    const QString m_iconId;
++    const QString m_fallback;
++};
+
+ namespace
+ {
+     bool isDarkTheme()
+     {
+         const QPalette palette = qApp->palette();
+@@ -217,14 +283,19 @@
+     icons[iconId] = icon;
+     return icon;
+ }
+
+ QIcon UIThemeManager::getIcon(const QString &iconId, const QString &fallback) const
+ {
+-    const auto colorMode = isDarkTheme() ? ColorMode::Dark : ColorMode::Light;
+-    return getIcon(iconId, fallback, colorMode);
++    const auto iter = m_themedIcons.constFind(iconId);
++    if (iter != m_themedIcons.cend())
++        return *iter;
++
++    const QIcon icon {new DynamicIconEngine {this, iconId, fallback}};
++    m_themedIcons[iconId] = icon;
++    return icon;
+ }
+
+ QIcon UIThemeManager::getSystrayIcon() const
+ {
+ #ifdef Q_OS_WIN
+     const auto colorMode = m_systemColorMode;

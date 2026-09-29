@@ -30,16 +30,6 @@ jobs:
       - name: Update brew
         run: brew update
 
-      - name: Install Qt
-        uses: jurplel/install-qt-action@v4
-        with:
-          version: '6.*.*'
-          host: mac
-          target: desktop
-          arch: clang_64
-          modules: qt5compat
-          cache: true
-
       - name: Prepare Homebrew cache
         id: homebrew-cache-key
         run: |
@@ -90,6 +80,16 @@ jobs:
             ~/Library/Caches/Homebrew
           key: homebrew-${{ env.BREW_ARCH }}-${{ runner.os }}-${{ env.KEY_HASH }}
 
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v4
+        with:
+          version: '6.*.*'
+          host: mac
+          target: desktop
+          arch: clang_64
+          modules: qt5compat
+          cache: true
+
       - name: Compile with codesign
         if: github.repository_owner == 'vit9696'
         env:
@@ -99,7 +99,7 @@ jobs:
         run: |
           curl -OL "https://github.com/acidanthera/ocbuild/raw/master/codesign/appsign.sh" || exit 1
           chmod a+x appsign.sh || exit 1
-          brew unlink create-dmg && brew link create-dmg || exit 1
+          brew unlink create-dmg cmake ninja boost libtorrent-rasterbar zlib openssl@3 && brew link create-dmg cmake ninja boost libtorrent-rasterbar zlib openssl@4 || exit 1
           DEPLOY_SCRIPT="$(pwd)/appsign.sh" ./qbittorrent.sh
 
       - name: Compile without codesign
