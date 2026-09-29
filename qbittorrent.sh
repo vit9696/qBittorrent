@@ -47,7 +47,7 @@ git apply ${SELFDIR}/patches/qBittorrent-font_fix.diff
 git apply ${SELFDIR}/patches/qbittorrent-macos-native-searchboxes.diff
 
 mkdir build && cd build
-cmake -DCMAKE_PREFIX_PATH="${DEPSDIR}:$(brew --prefix libtorrent-rasterbar):${ZLIB_ROOT}" -DCMAKE_CXX_STANDARD=23 \
+cmake -DCMAKE_PREFIX_PATH="${DEPSDIR};$(brew --prefix libtorrent-rasterbar);${ZLIB_ROOT}" -DCMAKE_CXX_STANDARD=23 \
   -DCMAKE_CXX_EXTENSIONS=OFF -DCMAKE_OSX_DEPLOYMENT_TARGET=${MIN_MACOS_VER} \
   -DCMAKE_BUILD_TYPE=Release -DOPENSSL_ROOT_DIR=${OPENSSL_ROOT_DIR} \
   -DOPENSSL_LIBRARIES=${OPENSSL_ROOT_DIR} -DZLIB_ROOT=${ZLIB_ROOT} \
