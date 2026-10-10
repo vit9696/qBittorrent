@@ -2,7 +2,7 @@
 
   • Native icons + [La Capitaine icon pack](https://github.com/keeferrourke/la-capitaine-icon-theme).
 
-  • Dynamic dark-light theme switching (based on [M-Hassan-Raza](https://github.com/M-Hassan-Raza)'s work. 
+  • Dynamic dark-light theme switching (based on [M-Hassan-Raza](https://github.com/M-Hassan-Raza)'s work). 
 
   • WebUI is also aware of the system theme.
 
