@@ -5,7 +5,7 @@
 set -o pipefail     # the return value of a pipeline is the status of the last command to exit with a non-zero status
 
 MIN_MACOS_VER=15
-QBITTORRENT_COMMIT="e8f7c18ba2ed6206ba0c78fe5c47cf05b056ab11"
+QBITTORRENT_COMMIT="4415df1b1b42f772b5b88848cd80961f1060378e"
 OPENSSL_ROOT_DIR="$(brew --prefix openssl@4)"
 OPENSSL_LIBRARIES="${OPENSSL_ROOT_DIR}/lib"
 ZLIB_ROOT="$(brew --prefix zlib)"
@@ -37,15 +37,8 @@ git_shallow_clone() {
 # libtorrent is provided by Homebrew (brew install libtorrent-rasterbar)
 
 # Download and build qBittorrent
-git_shallow_clone qBittorrent https://github.com/qBittorrent/qBittorrent $QBITTORRENT_COMMIT
+git_shallow_clone qBittorrent https://github.com/blahdy/qBittorrent $QBITTORRENT_COMMIT
 cd qBittorrent
-cp -r ${SELFDIR}/graphics/* .
-git apply ${SELFDIR}/patches/qBittorrent-colours.diff
-git apply ${SELFDIR}/patches/qBittorrent-sequential.diff
-git apply ${SELFDIR}/patches/qBittorrent-version.diff
-git apply ${SELFDIR}/patches/qBittorrent-release.diff
-git apply ${SELFDIR}/patches/qBittorrent-font_fix.diff
-git apply ${SELFDIR}/patches/qbittorrent-macos-native-searchboxes.diff
 
 mkdir build && cd build
 cmake -DCMAKE_PREFIX_PATH="${DEPSDIR};$(brew --prefix libtorrent-rasterbar);${ZLIB_ROOT}" -DBoost_ROOT="${BOOST_ROOT}" -DCMAKE_CXX_STANDARD=23 \
